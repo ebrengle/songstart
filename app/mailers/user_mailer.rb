@@ -1,13 +1,13 @@
 class UserMailer < ApplicationMailer
-  def welcome_email(user)
+
+  def account_activation(user)
     @user = user
-    mail(to: @user.email, subject: 'Welcome to Songstart')
+    mail to: user.email, subject: "Account activation"
   end
 
-  def reset_password_email(user)
-    @user = User.find user.id
-    @url  = edit_password_reset_url(@user.reset_password_token)
-    mail(:to => user.email,
-         :subject => "Your password has been reset")
+  def password_reset
+    @greeting = "Hi"
+
+    mail to: "to@example.org"
   end
 end
