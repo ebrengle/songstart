@@ -1,0 +1,30 @@
+<li id="project-<%= project.id %>">
+  <%= link_to gravatar_for(project.user, size: 50), project.user %>
+  <span class="user"><%= link_to project.user.name, project.user %></span>
+  <span class="title"><%= project.title %></span>
+  <span class="about"><%= project.about %></span>
+  <span class="city"><%= project.city %>, <%= project.state %> </span>
+  <span class="about">
+    <div class="audio" id='<%= project.id %>'>
+      <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
+      <script>
+
+        SC.initialize({
+          client_id: '21fc900cd5324053ed4515633fa3127d'
+        });
+      </script>
+      <script type="text/JavaScript">
+        SC.oEmbed('<%= project.url %>', {color: "333333"},  document.getElementById('<%= project.id %>'));
+      </script>
+
+    </div>
+  </span>
+
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(project.created_at) %> ago.
+    <% if current_user?(project.user) %>
+      <%= link_to "delete", project, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>
