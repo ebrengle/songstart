@@ -1,0 +1,14 @@
+<%= form_for(@project) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :title, placeholder: "Song title..." %>
+
+    <%= f.text_area :about, placeholder: "This song is about..." %>
+
+    <%= f.text_area :url, placeholder: "Soundcloud URL" %>
+
+    <%= f.text_area :city, placeholder: "Enter City" %>
+    <%= f.text_area :state, placeholder: "Choose State" %>
+  </div>
+  <%= f.submit "Post Song", class: "btn btn-primary" %>
+<% end %>

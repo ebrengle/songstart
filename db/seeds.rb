@@ -17,3 +17,15 @@ User.create!(name:  "Eric Brengle",
                activated: true,
                activated_at: Time.zone.now)
 end
+
+users = User.order(:created_at).take(6)
+10.times do
+  title = Faker::Lorem.words(2)
+  about = Faker::Lorem.sentence(5)
+  city = "Nashville"
+  state = "TN"
+  users.each { |user| user.projects.create!(title: title,
+                                            about: about,
+                                            city: city,
+                                            state: state) }
+end
